@@ -35,7 +35,7 @@ class pathReader :
 if __name__ == '__main__':
     try:
         p_r=pathReader("beginner_tutorials")
-        global_path = p_r.read_txt("turtle_path.txt")
+        global_path = p_r.read_txt('/path'+'/cityhall_path.txt')
         rospy.init_node('path_reader', anonymous=True)
         path_pub = rospy.Publisher('/global_path',Path, queue_size=1)
 

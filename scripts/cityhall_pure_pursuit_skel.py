@@ -15,9 +15,9 @@ from tf.transformations import euler_from_quaternion,quaternion_from_euler
 class pure_pursuit :
     def __init__(self):
         rospy.init_node('pure_pursuit', anonymous=True)
-        rospy.Subscriber("local_path", Path, self.path_callback)
-        rospy.Subscriber("odom", Odometry, self.odom_callback)
-        self.ctrl_cmd_pub = rospy.Publisher('ctrl_cmd',CtrlCmd, queue_size=1)
+        rospy.Subscriber("/local_path", Path, self.path_callback)
+        rospy.Subscriber("/odom", Odometry, self.odom_callback)
+        self.ctrl_cmd_pub = rospy.Publisher('/ctrl_cmd',CtrlCmd, queue_size=1)
         self.ctrl_cmd_msg=CtrlCmd()
         self.ctrl_cmd_msg.longlCmdType=2
 
@@ -66,7 +66,7 @@ class pure_pursuit :
 
                 if self.is_look_forward_point :
                     self.ctrl_cmd_msg.steering = atan2(2.0 * self.vehicle_length * sin(theta), self.lfd)                 
-                    self.ctrl_cmd_msg.velocity = 30.0
+                    self.ctrl_cmd_msg.velocity = 25.0  #15
 
                     os.system('clear')
                     print("-------------------------------------")

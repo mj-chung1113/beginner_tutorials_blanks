@@ -8,7 +8,7 @@ class s_drive():
         rospy.init_node('s_drive', anonymous=True)
         cmd_pub = rospy.Publisher('/ctrl_cmd', CtrlCmd, queue_size=1)
         rate = rospy.Rate(30)
-        cmd = CtrlCmd
+        cmd = CtrlCmd()
         cmd.longlCmdType = 2
         cmd.velocity = 10
         steering_cmd = [-0.2, 0.2]
